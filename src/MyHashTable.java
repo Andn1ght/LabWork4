@@ -31,7 +31,24 @@ public class MyHashTable<K, V> implements MyHashTableInterface<K, V>{
 
     @Override
     public void put(K key, V value) {
-
+        int index = hash(key);
+        HashNode<K, V> node = chainArray[index];
+        HashNode<K, V> prev = null;
+        if (node == null) {
+            chainArray[index] = new HashNode<>(key, value);
+            size++;
+        } else {
+            while (node != null) {
+                if (node.key.equals(key)) {
+                    node.value = value;
+                    return;
+                }
+                prev = node;
+                node = node.next;
+            }
+            prev.next = new HashNode<>(key, value);
+            size++;
+        }
     }
 
     @Override
