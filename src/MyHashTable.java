@@ -37,12 +37,17 @@ public class MyHashTable<K, V> implements MyHashTableInterface<K, V>{
 
     @Override
     public void put(K key, V value) {
+        if (key == null || value == null) {
+            throw new IllegalArgumentException("Key or value cannot be null.");
+        }
+        if (M * 4 < size) {
+            increaseBucket();
+        }
         int index = hash(key);
         HashNode<K, V> node = chainArray[index];
         HashNode<K, V> prev = null;
-        if (node == null) {
+        if (node == null){
             chainArray[index] = new HashNode<>(key, value);
-            size++;
         } else {
             while (node != null) {
                 if (node.key.equals(key)) {
@@ -53,8 +58,8 @@ public class MyHashTable<K, V> implements MyHashTableInterface<K, V>{
                 node = node.next;
             }
             prev.next = new HashNode<>(key, value);
-            size++;
         }
+        size++;
     }
 
     @Override
