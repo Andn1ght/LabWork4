@@ -31,5 +31,9 @@ public class Main {
         System.out.println("Does the hash table contain value 11? " + hashTable.contains(11));
 
         System.out.println(hashTable.getKey(11));
+
+        System.out.println();
+
+        hashTable.printBucketSize();
     }
 }
