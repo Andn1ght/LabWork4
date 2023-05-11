@@ -71,8 +71,24 @@ public class MyHashTable<K, V> implements MyHashTableInterface<K, V>{
     }
 
     @Override
-    public V remove(K key) {
-        return null;
+    public V remove(K key) throws NoSuchElementException{
+        int index = hash(key);
+        HashNode<K, V> node = chainArray[index];
+        HashNode<K, V> prev = null;
+        while (node != null) {
+            if (key.equals(node.key)) {
+                if (prev == null) {
+                    chainArray[index] = node.next;
+                } else {
+                    prev.next = node.next;
+                }
+                size--;
+                return node.value;
+            }
+            prev = node;
+            node = node.next;
+        }
+        throw new NoSuchElementException("Key not found in hash table.");
     }
 
     @Override
