@@ -85,7 +85,7 @@ public class MyHashTable<K, V> implements MyHashTableInterface<K, V>{
     }
 
     @Override
-    public V get(K key) throws NoSuchElementException {
+    public V get(K key) {
         int index = hash(key);
         HashNode<K, V> node = chainArray[index];
         while (node != null) {
@@ -94,11 +94,11 @@ public class MyHashTable<K, V> implements MyHashTableInterface<K, V>{
             }
             node = node.next;
         }
-        throw new NoSuchElementException("Key not found in hash table.");
+        return null;
     }
 
     @Override
-    public V remove(K key) throws NoSuchElementException{
+    public V remove(K key) throws NoSuchElementException {
         int index = hash(key);
         HashNode<K, V> node = chainArray[index];
         HashNode<K, V> prev = null;
@@ -119,7 +119,7 @@ public class MyHashTable<K, V> implements MyHashTableInterface<K, V>{
     }
 
     @Override
-    public boolean contains(V value) throws NullPointerException{
+    public boolean contains(V value) throws NullPointerException {
         if (value == null) {
             throw new NullPointerException("Value cannot be null.");
         }
@@ -136,7 +136,7 @@ public class MyHashTable<K, V> implements MyHashTableInterface<K, V>{
     }
 
     @Override
-    public K getKey(V value) throws NoSuchElementException {
+    public K getKey(V value) {
         for (int i = 0; i < M; i++) {
             HashNode<K, V> node = chainArray[i];
             while (node != null) {
@@ -146,6 +146,6 @@ public class MyHashTable<K, V> implements MyHashTableInterface<K, V>{
                 node = node.next;
             }
         }
-        throw new NoSuchElementException("Value does not exist in hash table");
+        return null;
     }
 }
