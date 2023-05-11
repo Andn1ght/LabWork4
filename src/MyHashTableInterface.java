@@ -4,4 +4,5 @@ public interface MyHashTableInterface<K, V> {
     V remove(K key);
     boolean contains(V value);
     K getKey(V value);
+    void printBucketSize();
 }
