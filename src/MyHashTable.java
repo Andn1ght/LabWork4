@@ -1,5 +1,8 @@
 public class MyHashTable<K, V> implements MyHashTableInterface<K, V>{
 
+    private class HashNode<K, V> {
+    }
+
     @Override
     public void put(K key, V value) {
 
