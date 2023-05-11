@@ -20,6 +20,14 @@ public class MyHashTable<K, V> implements MyHashTableInterface<K, V>{
     private int M = 11;
     private int size;
 
+    public MyHashTable() {
+
+    }
+
+    public MyHashTable(int M) {
+
+    }
+
     @Override
     public void put(K key, V value) {
 
