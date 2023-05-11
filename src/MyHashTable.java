@@ -1,3 +1,4 @@
+import javax.management.openmbean.KeyAlreadyExistsException;
 import java.util.NoSuchElementException;
 
 public class MyHashTable<K, V> implements MyHashTableInterface<K, V>{
@@ -33,6 +34,27 @@ public class MyHashTable<K, V> implements MyHashTableInterface<K, V>{
 
     private int hash(K key) {
         return key.hashCode() % M;
+    }
+
+    private void increaseBucket() {
+        int prevM = M;
+        M = M * 2;
+        size = 0;
+        HashNode<K, V>[] prevChainArray = chainArray;
+        chainArray = new HashNode[M];
+        for (int i = 0; i < prevM; i++) {
+            HashNode<K, V> node = prevChainArray[i];
+            while (node != null) {
+                HashNode<K, V> next = node.next;
+                node.next = null;
+                try {
+                    put(node.key, node.value);
+                } catch (KeyAlreadyExistsException e) {
+                    e.printStackTrace();
+                }
+                node = next;
+            }
+        }
     }
 
     @Override
