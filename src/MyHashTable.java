@@ -1,2 +1,2 @@
-public class MyHashTable {
+public class MyHashTable<K, V> {
 }
