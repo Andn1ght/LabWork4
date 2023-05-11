@@ -21,11 +21,12 @@ public class MyHashTable<K, V> implements MyHashTableInterface<K, V>{
     private int size;
 
     public MyHashTable() {
-
+        this.chainArray = new HashNode[M];
     }
 
     public MyHashTable(int M) {
-
+        this.M = M;
+        this.chainArray = new HashNode[M];
     }
 
     @Override
