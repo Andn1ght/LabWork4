@@ -9,6 +9,11 @@ public class MyHashTable<K, V> implements MyHashTableInterface<K, V>{
             this.key = key;
             this.value = value;
         }
+
+        @Override
+        public String toString() {
+            return "{" + key + " " + value + "}";
+        }
     }
 
     @Override
