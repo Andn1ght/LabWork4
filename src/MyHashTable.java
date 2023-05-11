@@ -29,6 +29,10 @@ public class MyHashTable<K, V> implements MyHashTableInterface<K, V>{
         this.chainArray = new HashNode[M];
     }
 
+    private int hash(K key) {
+        return key.hashCode() % M;
+    }
+
     @Override
     public void put(K key, V value) {
         int index = hash(key);
