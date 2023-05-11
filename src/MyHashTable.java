@@ -136,7 +136,16 @@ public class MyHashTable<K, V> implements MyHashTableInterface<K, V>{
     }
 
     @Override
-    public K getKey(V value) {
-        return null;
+    public K getKey(V value) throws NoSuchElementException {
+        for (int i = 0; i < M; i++) {
+            HashNode<K, V> node = chainArray[i];
+            while (node != null) {
+                if (node.value.equals(value)) {
+                    return node.key;
+                }
+                node = node.next;
+            }
+        }
+        throw new NoSuchElementException("Value does not exist in hash table");
     }
 }

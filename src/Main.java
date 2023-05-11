@@ -13,6 +13,7 @@ public class Main {
         hashTable.remove("two");
 
         System.out.println("Value for key 'one': " + hashTable.get("one"));
+        System.out.println("Value for key 'two': " + hashTable.get("two"));
         System.out.println("Value for key 'three': " + hashTable.get("three"));
 
         System.out.println("Does the hash table contain value 3? " + hashTable.contains(3));
