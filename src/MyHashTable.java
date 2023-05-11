@@ -1,3 +1,5 @@
+import java.util.NoSuchElementException;
+
 public class MyHashTable<K, V> implements MyHashTableInterface<K, V>{
 
     private class HashNode<K, V> {
@@ -56,8 +58,16 @@ public class MyHashTable<K, V> implements MyHashTableInterface<K, V>{
     }
 
     @Override
-    public V get(K key) {
-        return null;
+    public V get(K key) throws NoSuchElementException {
+        int index = hash(key);
+        HashNode<K, V> node = chainArray[index];
+        while (node != null) {
+            if (node.key.equals(key)) {
+                return node.value;
+            }
+            node = node.next;
+        }
+        throw new NoSuchElementException("Key not found in hash table.");
     }
 
     @Override
