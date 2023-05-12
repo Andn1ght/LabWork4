@@ -1,12 +1,10 @@
 public class MyTestingClass {
     private String standName;
     private String user;
-    private int rank;
 
     public MyTestingClass(String standName, String user) {
         this.standName = standName;
         this.user = user;
-        this.rank = (int) (Math.random() * 100);
     }
 
     public String getStandName() {
@@ -17,7 +15,11 @@ public class MyTestingClass {
         return user;
     }
 
-    public int getRank() {
-        return rank;
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 31 * hash + (standName == null ? 0 : standName.hashCode());
+        hash = 31 * hash + (user == null ? 0 : user.hashCode());
+        return Math.abs(hash);
     }
 }
