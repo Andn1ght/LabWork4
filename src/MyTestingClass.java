@@ -1,25 +1,26 @@
 public class MyTestingClass {
     private String standName;
-    private String user;
+    private int id;
 
-    public MyTestingClass(String standName, String user) {
+    public MyTestingClass(String standName, int id) {
         this.standName = standName;
-        this.user = user;
+        this.id = id;
     }
 
     public String getStandName() {
         return standName;
     }
 
-    public String getUser() {
-        return user;
+    public int getId() {
+        return id;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
         hash = 31 * hash + (standName == null ? 0 : standName.hashCode());
-        hash = 31 * hash + (user == null ? 0 : user.hashCode());
+        hash = 31 * hash + id;
         return Math.abs(hash);
     }
+
 }
