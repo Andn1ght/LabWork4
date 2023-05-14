@@ -15,6 +15,19 @@ public class MyTestingClass {
         return id;
     }
 
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (!(obj instanceof MyTestingClass)) {
+            return false;
+        }
+        MyTestingClass other = (MyTestingClass) obj;
+        return this.id == other.id && this.standName.equals(other.standName);
+    }
+
     @Override
     public int hashCode() {
         int hash = 7;
