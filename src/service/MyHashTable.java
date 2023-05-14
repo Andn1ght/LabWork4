@@ -7,6 +7,7 @@ public class MyHashTable<K, V> implements MyHashTableInterface<K, V> {
     /**
      * Private inner class representing a node in the hash table.
      */
+
     private class HashNode<K, V> {
         private K key;
         private V value;
