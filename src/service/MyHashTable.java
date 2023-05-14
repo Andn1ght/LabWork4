@@ -34,7 +34,9 @@ public class MyHashTable<K, V> implements MyHashTableInterface<K, V> {
     }
 
     private int hash(K key) {
-        return Math.abs(key.hashCode() % M);
+        int hashCode = key.hashCode();
+        int index = Math.abs(hashCode) % M;
+        return index;
     }
 
     private void increaseBucket() {
