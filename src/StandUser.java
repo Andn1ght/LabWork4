@@ -34,4 +34,12 @@ public class StandUser {
         hash = 31 * hash + age;
         return hash;
     }
+
+    @Override
+    public String toString() {
+        return "Stand-User{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
 }
