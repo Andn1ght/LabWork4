@@ -8,10 +8,11 @@ public class Main {
             "Gold Experience", "King Crimson", "Sticky Fingers", "Tusk", "D4C", "Made in Heaven"};
     private static final int NUM_STANDS = standNames.length;
 
+    private static final Random rand = new Random();
+
     public static void main(String[] args) {
 
         MyHashTable<MyTestingClass, StandUser> hashTable = new MyHashTable<>();
-        Random rand = new Random();
 
         for (int i = 0; i < 10000; i++) {
 
