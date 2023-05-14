@@ -36,4 +36,12 @@ public class MyTestingClass {
         return Math.abs(hash);
     }
 
+    @Override
+    public String toString() {
+        return "MyTestingClass{" +
+                "id=" + id +
+                ", name='" + standName + '\'' +
+                '}';
+    }
+
 }
