@@ -157,13 +157,13 @@ public class MyHashTable<K, V> implements MyHashTableInterface<K, V> {
         int all = 0;
         for (int i = 0; i < M; i++) {
             HashNode<K, V> node = chainArray[i];
-            int entries = 0;
+            int elements = 0;
             while (node != null) {
                 all++;
-                entries++;
+                elements++;
                 node = node.next;
             }
-            System.out.println("Bucket: "+ i + ", Entries: "+ entries);
+            System.out.println("Bucket: "+ i + ", Elements: "+ elements);
         }
         System.out.println("All: " + all);
     }
