@@ -1,6 +1,8 @@
+package service;
+
 import javax.management.openmbean.KeyAlreadyExistsException;
 
-public class MyHashTable<K, V> implements MyHashTableInterface<K, V>{
+public class MyHashTable<K, V> implements MyHashTableInterface<K, V> {
 
     private class HashNode<K, V> {
         private K key;
