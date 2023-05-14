@@ -26,4 +26,12 @@ public class StandUser {
         StandUser other = (StandUser) obj;
         return this.name.equals(other.name) && this.age == other.age;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 31 * hash + name.hashCode();
+        hash = 31 * hash + age;
+        return hash;
+    }
 }
