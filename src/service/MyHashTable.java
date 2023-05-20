@@ -327,7 +327,7 @@ public class MyHashTable<K, V> implements MyHashTableInterface<K, V> {
 
                 node.next = newChainArray[newIndex];
                 newChainArray[newIndex] = node;
-
+                // Move to the next node
                 node = next;
             }
         }
@@ -336,6 +336,4 @@ public class MyHashTable<K, V> implements MyHashTableInterface<K, V> {
         chainArray = newChainArray;
         M = newCapacity;
     }
-
-
 }
