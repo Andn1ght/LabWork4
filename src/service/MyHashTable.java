@@ -40,6 +40,7 @@ public class MyHashTable<K, V> implements MyHashTableInterface<K, V> {
     private HashNode<K, V>[] chainArray;
     private int M = 11;
     private int size;
+    private static final double LOAD_FACTOR = 0.75;
 
 
     /**
@@ -133,6 +134,9 @@ public class MyHashTable<K, V> implements MyHashTableInterface<K, V> {
         // Check if the load factor of the hash table exceeds a certain threshold, and if so, increase the capacity of the hash table
         if (M * 4 < size) {
             increaseBucket();
+        }
+        if (size >= M * LOAD_FACTOR) {
+            resize(LOAD_FACTOR);
         }
         // Get the index of the bucket where the key-value pair should be stored
         int index = hash(key);
@@ -311,7 +315,7 @@ public class MyHashTable<K, V> implements MyHashTableInterface<K, V> {
     }
 
 
-    public void resize(double loadFactor) {
+    private void resize(double loadFactor) {
         int newCapacity = (int) (size / loadFactor);
         HashNode<K, V>[] newTable = new HashNode[newCapacity];
 
