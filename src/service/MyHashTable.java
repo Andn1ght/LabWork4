@@ -135,8 +135,8 @@ public class MyHashTable<K, V> implements MyHashTableInterface<K, V> {
         if (M * 4 < size) {
             increaseBucket();
         }
-        if (size >= M * LOAD_FACTOR) {
-            resize(LOAD_FACTOR);
+        if ((double) size / M > LOAD_FACTOR) {
+            resize(M * 2);
         }
         // Get the index of the bucket where the key-value pair should be stored
         int index = hash(key);
@@ -315,22 +315,27 @@ public class MyHashTable<K, V> implements MyHashTableInterface<K, V> {
     }
 
 
-    private void resize(double loadFactor) {
-        int newCapacity = (int) (size / loadFactor);
-        HashNode<K, V>[] newTable = new HashNode[newCapacity];
+    private void resize(int newCapacity) {
+        HashNode<K, V>[] newChainArray = new HashNode[newCapacity];
 
-        for (HashNode<K, V> node : chainArray) {
+        for (int i = 0; i < M; i++) {
+            HashNode<K, V> node = chainArray[i];
             while (node != null) {
                 HashNode<K, V> next = node.next;
-                int newIndex = hash(node.key) % newCapacity;
-                node.next = newTable[newIndex];
-                newTable[newIndex] = node;
+
+                int newIndex = hash(node.key);
+
+                node.next = newChainArray[newIndex];
+                newChainArray[newIndex] = node;
+
                 node = next;
             }
         }
 
-        chainArray = newTable;
+        // Update the chain array and the capacity
+        chainArray = newChainArray;
         M = newCapacity;
     }
+
 
 }
