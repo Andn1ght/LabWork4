@@ -318,6 +318,7 @@ public class MyHashTable<K, V> implements MyHashTableInterface<K, V> {
     private void resize(int newCapacity) {
         HashNode<K, V>[] newChainArray = new HashNode[newCapacity];
 
+        // Rehash all existing elements and put them into new buckets
         for (int i = 0; i < M; i++) {
             HashNode<K, V> node = chainArray[i];
             while (node != null) {
