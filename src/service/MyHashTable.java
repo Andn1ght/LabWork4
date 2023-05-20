@@ -310,4 +310,23 @@ public class MyHashTable<K, V> implements MyHashTableInterface<K, V> {
         System.out.println("All: " + all);
     }
 
+
+    public void resize(double loadFactor) {
+        int newCapacity = (int) (size / loadFactor);
+        HashNode<K, V>[] newTable = new HashNode[newCapacity];
+
+        for (HashNode<K, V> node : chainArray) {
+            while (node != null) {
+                HashNode<K, V> next = node.next;
+                int newIndex = hash(node.key) % newCapacity;
+                node.next = newTable[newIndex];
+                newTable[newIndex] = node;
+                node = next;
+            }
+        }
+
+        chainArray = newTable;
+        M = newCapacity;
+    }
+
 }
